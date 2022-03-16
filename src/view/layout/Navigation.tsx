@@ -24,7 +24,7 @@ const StyledMediumNav = styled('nav')(({ theme }) => ({
 	top: 0,
 	height: '100vh',
 	width: '100vw',
-	backgroundColor: theme.palette.common.black,
+	backgroundColor: theme.palette.background.default,
 	transition: '0.6s',
 	'&.true': {
 		left: '0',
@@ -37,7 +37,7 @@ const StyledItemsContainer = styled('div')(({ theme }) => ({
 	gap: '1rem',
 	alignItems: 'start',
 
-	[theme.breakpoints.down('sm')]: {
+	[theme.breakpoints.down('md')]: {
 		paddingBlock: '1rem',
 		flexDirection: 'column',
 		paddingInline: '1em',
@@ -64,23 +64,23 @@ const StyledAnchor = styled('a')(({ theme }) => ({
 		position: 'absolute',
 		height: '2px',
 		width: '0%',
-		background: theme.palette.primary.main,
+		background: theme.palette.common.black,
 
 		transition: '200ms',
 		bottom: '-0.5em',
 	},
 	'&:hover::after': {
-		width: '90%',
-		background: theme.palette.primary.main,
+		width: '100%',
+		background: theme.palette.common.black,
 	},
 	'&:focus::after': {
-		width: '90%',
+		width: '100%',
 	},
 	'&.active::after': {
-		width: '90%',
+		width: '100%',
 	},
 	'&.active:hover::after': {
-		background: theme.palette.primary.main,
+		background: theme.palette.common.black,
 	},
 }));
 
@@ -154,7 +154,7 @@ const NavigatorMd = () => {
 			<StyledMediumNav className={`${visible}`}>
 				<StyledItemsContainer>
 					<IconButton onClick={handleClickAway}>
-						<CloseIcon sx={{ color: 'white' }} />
+						<CloseIcon sx={{ color: 'black' }} />
 					</IconButton>
 					<NavItems navItems={navItems} />
 				</StyledItemsContainer>
