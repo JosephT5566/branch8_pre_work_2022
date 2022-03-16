@@ -101,6 +101,7 @@ function IconLabel(props: { icon: string; alt: string; label: string }) {
 const StyledTag = styled('div')(({ theme }) => ({
 	padding: '0.5em',
 	background: theme.palette.background.paper,
+	borderRadius: '0.25em',
 }));
 
 export function StoreCard(props: { store: Store }) {

@@ -22,14 +22,13 @@ const HeaderContainer = styled('header')(({ theme }) => ({
 		display: 'flex',
 		gap: '1em',
 		alignItems: 'center',
-		height: '100%',
 		textDecoration: 'none',
 		color: theme.palette.text.secondary,
 		'&:hover': {
 			color: theme.palette.primary.main,
 		},
 		'& img': {
-			height: '100%',
+			height: '1.5rem',
 		},
 	},
 
@@ -42,7 +41,7 @@ export default function Header() {
 	return (
 		<HeaderContainer>
 			<a className={'logo'} href="/">
-				<h2>{'D&A Hostel'}</h2>
+				<img src={ICONS.logo_black} alt="logo" height={'1.5rem'} />
 			</a>
 			<Navigation />
 			<IconButton>
