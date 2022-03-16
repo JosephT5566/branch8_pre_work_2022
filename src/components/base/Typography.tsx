@@ -5,7 +5,7 @@ export function H1(props: TypographyProps) {
 	const { children, ...otherProps } = props;
 
 	return (
-		<Typography variant={'h1'} {...otherProps}>
+		<Typography variant={'h1'} sx={{ fontWeight: 'bold' }} {...otherProps}>
 			{children}
 		</Typography>
 	);
@@ -15,7 +15,7 @@ export function H2(props: TypographyProps) {
 	const { children, ...otherProps } = props;
 
 	return (
-		<Typography variant={'h2'} {...otherProps}>
+		<Typography variant={'h2'} sx={{ fontWeight: 'bold' }} {...otherProps}>
 			{children}
 		</Typography>
 	);

@@ -57,7 +57,9 @@ export default function Footer() {
 		<FooterContainer>
 			<div
 				className="image"
-				style={{ backgroundImage: 'url(http://placeimg.com/640/480/any)' }}
+				style={{
+					backgroundImage: 'url(https://fakeimg.pl/1200x400/582828/EAE0D0/?text=Footer)',
+				}}
 			>
 				<H2>{'Looking forword to see you'}</H2>
 				<Button>{'Book now'}</Button>
