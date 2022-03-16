@@ -25,7 +25,7 @@ const FooterContainer = styled('footer')(({ theme }) => ({
 		backgroundSize: 'cover',
 		color: theme.palette.common.white,
 		'& > h1': {
-			opacity: 0.5,
+			opacity: 0.8,
 		},
 	},
 	'& .socials': {

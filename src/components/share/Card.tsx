@@ -40,6 +40,9 @@ const StyledEventCard = styled(CardContainer)(({ theme }) => ({
 	},
 	'& > img': {
 		width: '40%',
+		[theme.breakpoints.down('md')]: {
+			width: '100%',
+		},
 	},
 	'& .content': {
 		padding: '1rem',

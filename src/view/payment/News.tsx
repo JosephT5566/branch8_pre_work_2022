@@ -11,9 +11,6 @@ const NewsContainer = styled('div')(({ theme }) => ({
 	flexBasis: '33%',
 	alignItems: 'center',
 	gap: '1rem',
-	[theme.breakpoints.down('md')]: {
-		padding: '2rem',
-	},
 
 	'& .head': {
 		width: 'inherit',
