@@ -12,6 +12,6 @@ export const layout = {
 		height: "5em",
 	},
 	footer: {
-		height: "5em",
+		height: "600px",
 	},
 } as ILayout;
