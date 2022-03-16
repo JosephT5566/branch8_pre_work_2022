@@ -4,10 +4,10 @@ export const typography: TypographyOptions = {
 	fontFamily: 'Roboto, Noto Sans TC, Open Sans, serif',
 	h1: {
 		fontFamily: 'Changa One, Noto Sans TC',
-		fontSize: '3rem',
+		fontSize: '2rem',
 	},
 	h2: {
 		fontFamily: 'Changa One, Noto Sans TC',
-		fontSize: '2rem',
+		fontSize: '1.5rem',
 	},
 };

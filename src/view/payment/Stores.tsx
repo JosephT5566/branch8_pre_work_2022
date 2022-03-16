@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 import { Button } from 'components/base/Button';
 import { useGetSurroundingStore } from 'api/info';
 import { StoreCard } from 'components/share/Card';
+import { H1 } from 'components/base/Typography';
 
 const StoreContainer = styled('div')(({ theme }) => ({
 	width: '100%',
@@ -39,7 +40,7 @@ export default function Stores() {
 	return stores ? (
 		<StoreContainer>
 			<div className="head">
-				<h1>{'Surrounding Store'}</h1>
+				<H1>{'Surrounding Store'}</H1>
 				<Button>More</Button>
 			</div>
 			<CardsContainer>

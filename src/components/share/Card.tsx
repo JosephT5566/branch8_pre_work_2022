@@ -2,6 +2,7 @@ import React from 'react';
 import { styled } from '@mui/material/styles';
 import moment from 'moment';
 
+import { H1, H2 } from 'components/base/Typography';
 import { Event, News, Store } from 'types/info';
 import { ICONS } from 'constants/icons';
 
@@ -17,20 +18,24 @@ const StyledIcon = styled('img')({
 	height: '1rem',
 });
 
-const StyledStoreCard = styled(CardContainer)({
+const StyledStoreCard = styled(CardContainer)(({ theme }) => ({
 	overflow: 'hidden',
+	background: theme.palette.common.white,
 
 	'& > img': {
 		width: '100%',
 	},
 	'& .content': {
+		display: 'flex',
+		flexDirection: 'column',
+		gap: '1em',
 		padding: '1rem',
 		borderBottom: 'solid 1px gray',
 	},
 	'& .connect': {
 		padding: '1rem',
 	},
-});
+}));
 const StyledEventCard = styled(CardContainer)(({ theme }) => ({
 	overflow: 'hidden',
 	display: 'flex',
@@ -40,11 +45,16 @@ const StyledEventCard = styled(CardContainer)(({ theme }) => ({
 	},
 	'& > img': {
 		width: '40%',
+		objectPosition: 'center',
+		objectFit: 'cover',
 		[theme.breakpoints.down('md')]: {
 			width: '100%',
 		},
 	},
 	'& .content': {
+		display: 'flex',
+		flexDirection: 'column',
+		gap: '1em',
 		padding: '1rem',
 		borderBottom: 'solid 1px gray',
 	},
@@ -59,6 +69,7 @@ const StyledNewsCard = styled(CardContainer)(({ theme }) => ({
 	overflow: 'hidden',
 	display: 'flex',
 	flexDirection: 'column',
+	gap: '1rem',
 	padding: '1rem',
 
 	'& .head': {
@@ -87,6 +98,11 @@ function IconLabel(props: { icon: string; alt: string; label: string }) {
 	);
 }
 
+const StyledTag = styled('div')(({ theme }) => ({
+	padding: '0.5em',
+	background: theme.palette.background.paper,
+}));
+
 export function StoreCard(props: { store: Store }) {
 	const { store } = props;
 
@@ -94,11 +110,15 @@ export function StoreCard(props: { store: Store }) {
 		<StyledStoreCard>
 			<img src={store.image} alt="store" />
 			<div className="content">
-				<div>
-					<h1>{store.title}</h1>
-					<p>{store.description}</p>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '1em' }}>
+					<H1>{store.title}</H1>
+					<p style={{ color: 'gray' }}>{store.description}</p>
 				</div>
-				<div></div>
+				<div style={{ display: 'flex', gap: '1em' }}>
+					{store.tags.map((t) => (
+						<StyledTag>{t}</StyledTag>
+					))}
+				</div>
 			</div>
 			<div className="connect">
 				<div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -123,12 +143,16 @@ export function EventCard(props: { event: Event }) {
 			<img src={event.image} alt="event" />
 			<div>
 				<div className="content">
-					<div>
-						<h1>{moment(event.date.date).format('HH:mm:ss')}</h1>
-						<h1>{event.title}</h1>
-						<p>{event.description}</p>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '1em' }}>
+						<H1 sx={{ color: 'gray' }}>{moment(event.date.date).format('HH:mm:ss')}</H1>
+						<H2>{event.title}</H2>
+						<p style={{ color: 'gray' }}>{event.description}</p>
 					</div>
-					<div></div>
+					<div style={{ display: 'flex', gap: '1em' }}>
+						{event.tags.map((t) => (
+							<StyledTag>{t}</StyledTag>
+						))}
+					</div>
 				</div>
 				<div className="connect">
 					<IconLabel
@@ -150,11 +174,11 @@ export function NewsCard(props: { news: News }) {
 		<StyledNewsCard>
 			<div className="head">
 				<img src={news.avatar} alt="avatar" />
-				<h2 className="name">{news.title}</h2>
-				<p>{moment(news.date.date).format('HH:mm:ss')}</p>
+				<H2 className="name">{news.title}</H2>
+				<p style={{ color: 'gray' }}>{moment(news.date.date).format('HH:mm:ss')}</p>
 			</div>
-			<h1>{news.title}</h1>
-			<p>{news.description}</p>
+			<H1>{news.title}</H1>
+			<p style={{ color: 'gray' }}>{news.description}</p>
 		</StyledNewsCard>
 	);
 }

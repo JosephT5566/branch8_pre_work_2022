@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import { Button } from 'components/base/Button';
 import { useGetEvents } from 'api/info';
 import { EventCard } from 'components/share/Card';
+import { H1 } from 'components/base/Typography';
 
 const StoreContainer = styled('div')(({ theme }) => ({
 	width: '100%',
@@ -32,7 +33,7 @@ export default function Events() {
 	return events ? (
 		<StoreContainer>
 			<div className="head">
-				<h1>{'Events'}</h1>
+				<H1>{'Events'}</H1>
 				<Button>More</Button>
 			</div>
 			<CardsContainer>

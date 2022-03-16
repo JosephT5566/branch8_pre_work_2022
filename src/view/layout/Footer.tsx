@@ -5,6 +5,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Button } from 'components/base/Button';
+import { H1, H2 } from 'components/base/Typography';
 
 const FooterContainer = styled('footer')(({ theme }) => ({
 	height: theme.layout.footer.height,
@@ -43,7 +44,11 @@ const FooterContainer = styled('footer')(({ theme }) => ({
 		width: '100%',
 		display: 'flex',
 		justifyContent: 'center',
+		padding: '1rem',
 		background: '#141414',
+		'& p': {
+			textAlign: 'center',
+		},
 	},
 }));
 
@@ -54,11 +59,11 @@ export default function Footer() {
 				className="image"
 				style={{ backgroundImage: 'url(http://placeimg.com/640/480/any)' }}
 			>
-				<h1>{'Looking forword to see you'}</h1>
+				<H2>{'Looking forword to see you'}</H2>
 				<Button>{'Book now'}</Button>
 			</div>
 			<div className="socials">
-				<h1>{'D&A Hostel'}</h1>
+				<H1>{'D&A Hostel'}</H1>
 				<div className="icons">
 					<TwitterIcon sx={{ color: 'white' }} />
 					<FacebookIcon sx={{ color: 'white' }} />

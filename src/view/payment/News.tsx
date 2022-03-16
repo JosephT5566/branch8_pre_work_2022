@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import { Button } from 'components/base/Button';
 import { useGetNews } from 'api/info';
 import { NewsCard } from 'components/share/Card';
+import { H1 } from 'components/base/Typography';
 
 const NewsContainer = styled('div')(({ theme }) => ({
 	width: '100%',
@@ -32,7 +33,7 @@ export default function News() {
 	return news ? (
 		<NewsContainer>
 			<div className="head">
-				<h1>{'News & Bulletin'}</h1>
+				<H1>{'News & Bulletin'}</H1>
 				<Button>More</Button>
 			</div>
 			<CardsContainer>
