@@ -27,7 +27,7 @@ const StoreContainer = styled('div')(({ theme }) => ({
 
 const CardsContainer = styled('div')(({ theme }) => ({
 	display: 'flex',
-	gap: '1rem',
+	gap: '1.5rem',
 	[theme.breakpoints.down('md')]: {
 		flexDirection: 'column',
 	},
@@ -36,19 +36,17 @@ const CardsContainer = styled('div')(({ theme }) => ({
 export default function Stores() {
 	const { stores } = useGetSurroundingStore();
 
-	return (
+	return stores ? (
 		<StoreContainer>
 			<div className="head">
 				<h1>{'Surrounding Store'}</h1>
 				<Button>More</Button>
 			</div>
-			{stores && (
-				<CardsContainer>
-					{stores.map((s, index) => (
-						<StoreCard store={s} key={index} />
-					))}
-				</CardsContainer>
-			)}
+			<CardsContainer>
+				{stores.map((s, index) => (
+					<StoreCard store={s} key={index} />
+				))}
+			</CardsContainer>
 		</StoreContainer>
-	);
+	) : null;
 }

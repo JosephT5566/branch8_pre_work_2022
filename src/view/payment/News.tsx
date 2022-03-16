@@ -1,16 +1,16 @@
 import { styled } from '@mui/material/styles';
 
 import { Button } from 'components/base/Button';
-import { useGetEvent } from 'api/info';
-import { EventCard } from 'components/share/Card';
+import { useGetNews } from 'api/info';
+import { NewsCard } from 'components/share/Card';
 
 const NewsContainer = styled('div')(({ theme }) => ({
 	width: '100%',
 	display: 'flex',
 	flexDirection: 'column',
+	flexBasis: '33%',
 	alignItems: 'center',
 	gap: '1rem',
-	padding: '1rem max(1rem, calc((100vw - 1200px) / 2))',
 	[theme.breakpoints.down('md')]: {
 		padding: '2rem',
 	},
@@ -23,30 +23,26 @@ const NewsContainer = styled('div')(({ theme }) => ({
 	},
 }));
 
-const CardsContainer = styled('div')(({ theme }) => ({
+const CardsContainer = styled('div')({
 	display: 'flex',
 	gap: '1rem',
-	[theme.breakpoints.down('md')]: {
-		flexDirection: 'column',
-	},
-}));
+	flexDirection: 'column',
+});
 
 export default function News() {
-	const { events } = useGetEvent();
+	const { news } = useGetNews();
 
-	return (
+	return news ? (
 		<NewsContainer>
 			<div className="head">
-				<h1>{'Events'}</h1>
+				<h1>{'News & Bulletin'}</h1>
 				<Button>More</Button>
 			</div>
-			{events && (
-				<CardsContainer>
-					{events.map((e, index) => (
-						<EventCard event={e} key={index} />
-					))}
-				</CardsContainer>
-			)}
+			<CardsContainer>
+				{news.map((n, index) => (
+					<NewsCard news={n} key={index} />
+				))}
+			</CardsContainer>
 		</NewsContainer>
-	);
+	) : null;
 }
