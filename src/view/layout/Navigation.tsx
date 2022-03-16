@@ -1,112 +1,112 @@
-import React, { useState } from "react";
-import { styled, useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import React, { useState } from 'react';
+import { styled, useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-import ClickAwayListener from "@mui/material/ClickAwayListener";
-import IconButton from "@mui/material/IconButton";
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
-import { ROUTE } from "constants/static";
-import { NavItem } from "types/navigation";
+import { ROUTE } from 'constants/static';
+import { ICONS } from 'constants/icons';
+import { NavItem } from 'types/navigation';
 
-const StyledLargeNav = styled("nav")({
-	display: "flex",
-	gap: "1rem",
+const StyledLargeNav = styled('nav')({
+	flexGrow: 1,
+	display: 'flex',
+	gap: '1rem',
 });
 
-const StyledMediumNav = styled("nav")(({ theme }) => ({
-	position: "fixed",
-	display: "flex",
+const StyledMediumNav = styled('nav')(({ theme }) => ({
+	position: 'fixed',
+	display: 'flex',
 	zIndex: theme.zIndex.drawer,
 
-	right: `-100vw`,
+	left: `-100vw`,
 	top: 0,
-	height: "100vh",
-	width: "100vw",
-	backgroundColor: theme.palette.secondary.dark,
-	transition: "0.6s",
-	"&.true": {
-		right: "0",
+	height: '100vh',
+	width: '100vw',
+	backgroundColor: theme.palette.common.black,
+	transition: '0.6s',
+	'&.true': {
+		left: '0',
 	},
 }));
 
-const StyledItemsContainer = styled("div")(({ theme }) => ({
-	display: "flex",
-	width: "100%",
-	gap: "1rem",
+const StyledItemsContainer = styled('div')(({ theme }) => ({
+	display: 'flex',
+	width: '100%',
+	gap: '1rem',
+	alignItems: 'start',
 
-	[theme.breakpoints.down("sm")]: {
-		paddingTop: theme.layout.header.height,
-		flexDirection: "column",
-		paddingInline: "1em",
+	[theme.breakpoints.down('sm')]: {
+		paddingBlock: '1rem',
+		flexDirection: 'column',
+		paddingInline: '1em',
 	},
 }));
 
-const StyledAnchor = styled("a")(({ theme }) => ({
-	position: "relative",
-	display: "flex",
+const StyledAnchor = styled('a')(({ theme }) => ({
+	position: 'relative',
+	display: 'flex',
 	color: theme.palette.grey[400],
 	fontFamily: theme.typography.fontFamily,
 
-	"&:focus": {
-		outline: "0",
+	'&:focus': {
+		outline: '0',
 	},
 
-	"&.active": {
+	'&.active': {
 		color: theme.palette.primary.main,
 	},
 
 	// add underline
-	"&::after": {
+	'&::after': {
 		content: `''`,
-		position: "absolute",
-		height: "2px",
-		width: "0%",
+		position: 'absolute',
+		height: '2px',
+		width: '0%',
 		background: theme.palette.primary.main,
 
-		transition: "200ms",
-		bottom: "-0.5em",
+		transition: '200ms',
+		bottom: '-0.5em',
 	},
-	"&:hover::after": {
-		width: "90%",
+	'&:hover::after': {
+		width: '90%',
 		background: theme.palette.primary.main,
 	},
-	"&:focus::after": {
-		width: "90%",
+	'&:focus::after': {
+		width: '90%',
 	},
-	"&.active::after": {
-		width: "90%",
+	'&.active::after': {
+		width: '90%',
 	},
-	"&.active:hover::after": {
+	'&.active:hover::after': {
 		background: theme.palette.primary.main,
 	},
 }));
 
-const MenuButtonContainer = styled("div")(({ theme }) => ({
-	position: "fixed",
+const MenuButtonContainer = styled('div')(({ theme }) => ({
 	height: theme.layout.header.height,
-	display: "flex",
+	display: 'flex',
+	order: -1,
 	top: 0,
-	right: "1rem",
-	alignItems: "center",
-	justifyContent: "center",
+	right: '1rem',
+	alignItems: 'center',
+	justifyContent: 'center',
 }));
 
 const StyledMenuButton = styled(IconButton)(({ theme }) => ({
 	color: theme.palette.primary.main,
-	padding: "0.5em 0.8em",
-	backgroundColor: `${theme.palette.secondary.main}BF`,
-	borderRadius: "0.5em",
 
-	"&:hover": {
+	'&:hover': {
 		backgroundColor: `${theme.palette.secondary.main}E5`,
 	},
 }));
 
 const navItems = [
-	new NavItem("Home", ROUTE.root),
-	new NavItem("Events", ROUTE.events),
-	new NavItem("News & bulletin", ROUTE.news),
-	new NavItem("About", ROUTE.about),
+	new NavItem('Home', ROUTE.root),
+	new NavItem('Events', ROUTE.events),
+	new NavItem('News & bulletin', ROUTE.news),
+	new NavItem('About', ROUTE.about),
 ];
 
 const NavItems = (props: { navItems: NavItem[] }) => {
@@ -141,29 +141,30 @@ const NavigatorMd = () => {
 	};
 
 	const handleClickAway = () => {
-		if (visible) {
-			setVisible(false);
-		}
+		setVisible(false);
 	};
 
 	return (
-		<ClickAwayListener onClickAway={handleClickAway}>
+		<>
+			<MenuButtonContainer>
+				<StyledMenuButton aria-label="menu" onClick={handleClick}>
+					<img src={ICONS.menu} alt="menu" />
+				</StyledMenuButton>
+			</MenuButtonContainer>
 			<StyledMediumNav className={`${visible}`}>
 				<StyledItemsContainer>
-					<MenuButtonContainer>
-						<StyledMenuButton aria-label="menu" onClick={handleClick}>
-							{/* <MenuIcon /> */}
-						</StyledMenuButton>
-					</MenuButtonContainer>
+					<IconButton onClick={handleClickAway}>
+						<CloseIcon sx={{ color: 'white' }} />
+					</IconButton>
 					<NavItems navItems={navItems} />
 				</StyledItemsContainer>
 			</StyledMediumNav>
-		</ClickAwayListener>
+		</>
 	);
 };
 
 export default function Navigation() {
 	const theme = useTheme();
 
-	return useMediaQuery(theme.breakpoints.up("md")) ? <NavigatorLg /> : <NavigatorMd />;
+	return useMediaQuery(theme.breakpoints.down('md')) ? <NavigatorMd /> : <NavigatorLg />;
 }
