@@ -1,9 +1,10 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme } from '@mui/material/styles';
 
-import { typography } from "./typography";
-import { ILayout, layout } from "./layout";
+import { typography } from './typography';
+import { palette } from './palette';
+import { ILayout, layout } from './layout';
 
-declare module "@mui/material/styles/createTheme" {
+declare module '@mui/material/styles/createTheme' {
 	interface Theme {
 		layout: ILayout;
 	}
@@ -13,6 +14,6 @@ declare module "@mui/material/styles/createTheme" {
 }
 
 // Create a theme instance.
-const theme = createTheme({ typography, layout });
+const theme = createTheme({ palette, typography, layout });
 
 export default theme;
