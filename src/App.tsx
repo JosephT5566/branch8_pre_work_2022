@@ -23,6 +23,7 @@ const CarouselContainer = styled('div')(({ theme }) => ({
 		alignItems: 'center',
 		gap: '0.5rem',
 		color: theme.palette.common.white,
+		textAlign: 'center',
 		zIndex: 1,
 	},
 }));
