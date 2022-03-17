@@ -12,7 +12,7 @@ const StoreContainer = styled('div')(({ theme }) => ({
 	flexDirection: 'column',
 	alignItems: 'center',
 	gap: '1rem',
-	padding: '1rem max(1rem, calc((100vw - 1200px) / 2))',
+	padding: '3rem max(1rem, calc((100vw - 1200px) / 2))',
 	backgroundColor: '#e8e8e8',
 	[theme.breakpoints.down('md')]: {
 		padding: '2rem',

@@ -21,21 +21,29 @@ const StyledIcon = styled('img')({
 const StyledStoreCard = styled(CardContainer)(({ theme }) => ({
 	overflow: 'hidden',
 	background: theme.palette.common.white,
+	display: 'flex',
+	flexDirection: 'column',
 
 	'& > img': {
 		width: '100%',
+		height: '40%',
+		objectFit: 'cover',
+		objectPosition: 'center',
 	},
 	'& .content': {
+		flexGrow: 1,
 		display: 'flex',
 		flexDirection: 'column',
 		gap: '1em',
+		justifyContent: 'space-between',
 		padding: '1rem',
-		borderBottom: 'solid 1px gray',
+		borderBottom: 'solid 1px #e6e6e6',
 	},
 	'& .connect': {
 		padding: '1rem',
 	},
 }));
+
 const StyledEventCard = styled(CardContainer)(({ theme }) => ({
 	overflow: 'hidden',
 	display: 'flex',
@@ -54,9 +62,9 @@ const StyledEventCard = styled(CardContainer)(({ theme }) => ({
 	'& .content': {
 		display: 'flex',
 		flexDirection: 'column',
-		gap: '1em',
+		gap: '0.5em',
 		padding: '1rem',
-		borderBottom: 'solid 1px gray',
+		borderBottom: 'solid 1px #e6e6e6',
 	},
 	'& .connect': {
 		display: 'flex',
@@ -69,7 +77,7 @@ const StyledNewsCard = styled(CardContainer)(({ theme }) => ({
 	overflow: 'hidden',
 	display: 'flex',
 	flexDirection: 'column',
-	gap: '1rem',
+	gap: '0.5rem',
 	padding: '1rem',
 
 	'& .head': {
@@ -144,7 +152,7 @@ export function EventCard(props: { event: Event }) {
 			<img src={event.image} alt="event" />
 			<div>
 				<div className="content">
-					<div style={{ display: 'flex', flexDirection: 'column', gap: '1em' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '0.5em' }}>
 						<H1 sx={{ color: 'gray' }}>{moment(event.date.date).format('HH:mm:ss')}</H1>
 						<H2>{event.title}</H2>
 						<p style={{ color: 'gray' }}>{event.description}</p>
